@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+      <div class="form-group">
+        <label for="phoneNo">Phone</label>
+        <input type="email" class="form-control" id="phoneNo" formControlName="phoneNo">
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="">
+        Phone no should be of length 10
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+      </div>
+      <div>
+        <button class="btn btn-success" type="submit" [disabled]="!loginForm.valid">{{ isLoginMode? 'LogIn' : 'Sign
+          Up'}}</button> |
+        <button class="btn btn-success" type="button" (click)="onSwitchMode()"> Switch to {{ !isLoginMode? 'LogIn' :
+          'Sign Up'}}</button>
+      </div>
+    </form>
+  </div>
+</div>
