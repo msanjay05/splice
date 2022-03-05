@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Photos } from './photos.model';
@@ -9,7 +9,7 @@ import { Photos } from './photos.model';
   templateUrl: './photos.component.html',
   styleUrls: ['./photos.component.css']
 })
-export class PhotosComponent implements OnInit,OnDestroy {
+export class PhotosComponent implements OnInit,OnDestroy,OnChanges {
   photos:Photos[]=[];
   subs:Subscription;
   filteredStatus:string="";
@@ -24,6 +24,13 @@ export class PhotosComponent implements OnInit,OnDestroy {
         this.photos=photos;
       })
     ).subscribe();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log(this.filteredStatus)
+  }
+  filtervalue(value:string)
+  {
+    this.filteredStatus=value
   }
   ngOnDestroy(): void {
       this.subs.unsubscribe();

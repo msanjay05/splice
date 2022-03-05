@@ -1,0 +1,4 @@
+<input list="brow"[(ngModel)]="search" name="search" (change)="selected(search)">
+<datalist id="brow">
+  <option *ngFor="let search of searchString" [value]="search" ></option>
+</datalist>

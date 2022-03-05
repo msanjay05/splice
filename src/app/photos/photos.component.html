@@ -3,7 +3,8 @@
     <p>Flilter Your Photos</p>
   </div>
   <div class="col-md-7">
-    <input type="text" [(ngModel)]="filteredStatus">
+    <!-- <input type="text" [(ngModel)]="filteredStatus"> -->
+    <app-custom-select (searchValue)="filtervalue($event)" ></app-custom-select>
   </div>
 </div>
 <hr>
