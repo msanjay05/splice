@@ -1,4 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Photos } from '../photos.model';
+import { PhotosService } from '../photos.service';
 
 @Component({
   selector: 'app-custom-select',
@@ -8,17 +11,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class CustomSelectComponent implements OnInit {
   @Output() searchValue=new EventEmitter<string>();
   search:string="";
-  searchString=[
-    'accusamus',
-    'reprehenderit',
-    'officia'
-  ]
-  constructor() { }
+  photos:Photos[]=[];
+  constructor(private photosService:PhotosService) { }
   selected(searchValue)
   {
     this.searchValue.emit(searchValue)
   }
   ngOnInit(): void {
+    this.photos=this.photosService.getPhotos().slice(0,10);
   }
-
 }

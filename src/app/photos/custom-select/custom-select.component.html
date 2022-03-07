@@ -1,4 +1,4 @@
-<input list="brow"[(ngModel)]="search" name="search" (change)="selected(search)">
-<datalist id="brow">
-  <option *ngFor="let search of searchString" [value]="search" ></option>
+<input list="brow"[(ngModel)]="search" name="search" (change)="selected(search)" autocomplete="off">
+<datalist id="brow" *ngIf="search.length>0" >
+  <option *ngFor="let photo of photos" [value]="photo.title" ></option>
 </datalist>
